@@ -17,13 +17,13 @@ object pepita {
     method energiaGastadaAlVolar(distancia){
         return  10 + distancia
     }
-    /* Lo mismo que con pepon.
+
     method validarVolar(distancia){
-        if(!self.puedeVolar(distancua)){
+        if(!self.puedeVolar(distancia)){
             self.error("No se puede volar " + self.energiaGastadaAlVolar(distancia) + " con " + energia + " de energia")
         }
     }
-    */
+    
     method puedeVolar(distancia){
         return self.energiaGastadaAlVolar(distancia) < energia
     }
@@ -69,7 +69,7 @@ object pepon {
 	}
 		
 	method volar(distancia) {
-        //self.validarVolar(distancia)
+        self.validarVolar(distancia)
 		energia = energia - self.energiaGastadaAlVolar(distancia)
 	}
 
@@ -77,16 +77,15 @@ object pepon {
         return 20 + 2*distancia
     }
 
-    /* NO hace falta hacerlo en las aves en este caso. Solo vuelvan cuando se lo indica en entrenador. El error es de del etrenador
-    method energiaGastadaAlVolar(distancia){
-        return 20 + 2*distancia
-    }
+    // La cosgina dice que un ave no puede volar si no le alcanza la anergia
+    
 
     method validarVolar(distancia){
         if(!self.puedeVolar(distancia)){
             self.error("No se puede volar " + self.energiaGastadaAlVolar(distancia) + " con " + energia + " de energia")
         }
-    }*/
+    }
+
     method puedeVolar(distancia){
         return self.energiaGastadaAlVolar(distancia) < energia
     }
