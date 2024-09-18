@@ -17,12 +17,13 @@ object pepita {
     method energiaGastadaAlVolar(distancia){
         return  10 + distancia
     }
-
+	/* El enunciado no lo pide
     method validarVolar(distancia){
         if(!self.puedeVolar(distancia)){
             self.error("No se puede volar " + self.energiaGastadaAlVolar(distancia) + " con " + energia + " de energia")
         }
     }
+	*/
     
     method puedeVolar(distancia){
         return self.energiaGastadaAlVolar(distancia) < energia
@@ -69,7 +70,7 @@ object pepon {
 	}
 		
 	method volar(distancia) {
-        self.validarVolar(distancia)
+        //self.validarVolar(distancia)
 		energia = energia - self.energiaGastadaAlVolar(distancia)
 	}
 
@@ -77,15 +78,15 @@ object pepon {
         return 20 + 2*distancia
     }
 
-    // La cosgina dice que un ave no puede volar si no le alcanza la anergia
+    // La consigna dice que un ave no puede volar si no le alcanza la anergia
     
-
+/*
     method validarVolar(distancia){
         if(!self.puedeVolar(distancia)){
             self.error("No se puede volar " + self.energiaGastadaAlVolar(distancia) + " con " + energia + " de energia")
         }
     }
-
+*/
     method puedeVolar(distancia){
         return self.energiaGastadaAlVolar(distancia) < energia
     }
@@ -109,10 +110,10 @@ object roque {
 }
 
 object milena{
-    const aves = []
+    const aves = #{} //
 
-    method entrenar(_ave){
-        aves.add(_ave)
+    method entrenar(ave){
+        aves.add(ave)
     }
 
     method movilizar(distancia){
@@ -121,9 +122,21 @@ object milena{
     }
 
     method validarMovilizar(distancia){
-        if( aves.any( { ave => !ave.puedeVolar(distancia)})){
+        if(!self.puedeMovilizar(distancia)){
             self.error("Algun ave no puede volar " + distancia + " distancia")
-        }
+        }0
     }
+	method puedeMovilizar(distancia){
+		return aves.all( { ave => ave.puedeVolar(distancia)})
+	}
+
+	// not all === any
 
 }
+
+/* validación: si la condación da verdadero falla.
+*/
+
+// forEach solo para orden, usar con cabeza(poco)
+// no devuelve nada
+// toda la coleccion hace X orden.
